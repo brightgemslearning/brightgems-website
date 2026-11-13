@@ -1,0 +1,24 @@
+# Netlify settings for brightgems.app
+# Plain static site: nothing to build, publish the repo as it is.
+[build]
+  publish = "."
+  command = ""
+
+# Keep project notes out of the public site.
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/404"
+  status = 404
+  force = true
