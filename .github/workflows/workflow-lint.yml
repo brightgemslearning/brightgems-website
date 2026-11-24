@@ -1,0 +1,24 @@
+# workflow-lint: checks every GitHub workflow file in this repository with actionlint
+# (github.com/rhysd/actionlint, MIT), so a broken workflow file is caught before it merges.
+# Why: in November 2026 a typo (an unquoted *) stopped the Books checker-gate from ever running,
+# and nothing noticed for days. Runs on every pull request (about 10 seconds), so it can be made
+# a required check. Read-only; no secrets.
+name: workflow-lint
+on:
+  pull_request:
+  push: { branches: [main] }
+permissions: { contents: read }
+jobs:
+  workflow-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - name: Check every workflow file (actionlint)
+        env: { V: 1.7.12, SHA: 8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8 }
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/al.tgz" "https://github.com/rhysd/actionlint/releases/download/v${V}/actionlint_${V}_linux_amd64.tar.gz"
+          echo "${SHA}  $RUNNER_TEMP/al.tgz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/al.tgz" -C "$RUNNER_TEMP" actionlint
+          "$RUNNER_TEMP/actionlint" -color -shellcheck= -pyflakes=
