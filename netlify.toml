@@ -28,3 +28,10 @@
   to = "/404"
   status = 404
   force = true
+
+# Keep GitHub's check settings out of the public site.
+[[redirects]]
+  from = "/.github/*"
+  to = "/404"
+  status = 404
+  force = true
