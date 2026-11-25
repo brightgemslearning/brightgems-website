@@ -22,7 +22,9 @@ the gems add the warmth. The page is a quiet gallery: big headlines, lots of air
    markers (step numbers, skill markers, check marks), never as large fills.
 6. **No emoji as icons.** Use small drawn gem-shape markers instead.
 7. **Rounded, not bubbly.** Cards 18px corners; buttons are pills.
-8. **Phone first.** Everything stacks to one column under 760px; touch targets at least 44px.
+8. **Keyboard focus is always visible:** a 3px Gem Blue ring (light blue on the dark band). Never remove it.
+9. **Colors come from the tokens below,** never written straight into a rule.
+10. **Phone first.** Everything stacks to one column under 760px; touch targets at least 44px.
 
 ## Tokens
 
@@ -38,6 +40,8 @@ the gems add the warmth. The page is a quiet gallery: big headlines, lots of air
 | `action-on-night` | `#8fb0ff` | Links on the dark band |
 | `gem-cyan` / `gem-purple` / `gem-gold` | `#0aa8d8` / `#7a4be0` / `#f2b230` | Small markers only |
 | `hairline` | `#e6e4ef` | Card borders, list dividers |
+| `on-action` | `#ffffff` | Text on blue or dark buttons |
+| `header-glass` / `night-card` / `lift-shadow` | see `styles.css` | Header background, cards on the dark band, the report's one shadow |
 
 | Type | Size / weight / line height / tracking |
 |---|---|
